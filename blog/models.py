@@ -26,9 +26,9 @@ class Post(models.Model):
         verbose_name='дата публикации'
     )
 
-    def published(self) -> None:
+    def publish(self) -> None:
         self.published_date = timezone.now()
-        self.save
+        self.save()
 
     def __str__(self) -> str:
         return self.title
