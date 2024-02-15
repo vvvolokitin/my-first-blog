@@ -10,13 +10,17 @@
               {% for post in posts %}
                   <hr>
                   <div class="post">
-                      <div class="date">
-                        <p>Опубликовано: {{ post.published_date }}</p>
-                      </div>
+                      
                       <h2><a href="{% url 'blog:post_detail' pk=post.pk %}">
                         {{ post.title }}</a></h2>
                       <p>{{ post.text|linebreaksbr }}</p>
                   </div>
+                  <div class="date">
+                    <p>Автор публикации: {{ post.author }} Опубликовано: {{ post.published_date }}</p>
+                  </div>
+                  <a href="{% url 'blog:post_detail' pk=post.pk %}">Комментарии: 
+                    {{ post.approved_comments.count }}
+                  </a>
               {% endfor %}
 
 {% endblock %}
